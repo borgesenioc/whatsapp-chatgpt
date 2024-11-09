@@ -46,7 +46,10 @@ const start = async () => {
 				scale: 1
 			},
 			(err, url) => {
-				if (err) throw err;
+				if (err) {
+					console.error("Failed to generate QR code:", err);
+					return; // Gracefully handle the error without crashing
+				}
 				cli.printQRCode(url);
 			}
 		);
